@@ -61,3 +61,9 @@ export const getTags: TTagsFetcher = async () => {
   const response = await fetch(URL)
   return await response.json()
 }
+
+export const TriviaApi = {
+  getTags,
+  getCategory,
+  getQuestions,
+}
