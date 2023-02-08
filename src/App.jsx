@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import '@/css/App.css'
 import Login from './routes/Login/Login'
+import Home from '@/routes/Home/Home'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -9,8 +10,8 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route index element={<Login />} />
-        {/* <Route path="home" element={<Home />} /> */}
+        <Route index element={<Home />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </div>
   )

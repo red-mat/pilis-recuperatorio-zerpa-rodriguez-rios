@@ -1,27 +1,28 @@
 import { useContext } from 'react'
 import { useForm } from 'react-hook-form'
-import { useNavigate } from 'react-router-dom'
 import { UserContext } from '../../context/UserContext'
+import Home from '../Home/Home'
 import './Login.css'
+import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
   const { setCurrentUser } = useContext(UserContext)
+  const { navigate } = useNavigate()
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm()
-  const navigate = useNavigate()
 
   const onSubmit = data => {
-    localStorage.setItem('currentUser', JSON.stringify(data))
     setCurrentUser(data)
     navigate('/')
   }
 
   return (
     <div className="sign-in-container">
-      <span>Ingresa con tu usuario y contraseña</span>
+      <h2>Ingresa con tu usuario y contraseña</h2>
       <form className="sign-in-form" onSubmit={handleSubmit(onSubmit)}>
         <input
           className="input-form"
@@ -41,9 +42,18 @@ const Login = () => {
           })}
         />
         <p>{errors.password?.message}</p>
-        <button className="btn-form" type="submit">
-          Iniciar Sesión
-        </button>
+        <div className="btn-login">
+          <div className="btn1-login">
+            <button className="btn-form" type="submit">
+              Iniciar Sesión
+            </button>
+          </div>
+          <div className="btn2-login">
+            <button className="btn-form" type="submit">
+              Registrarse
+            </button>
+          </div>
+        </div>
       </form>
     </div>
   )

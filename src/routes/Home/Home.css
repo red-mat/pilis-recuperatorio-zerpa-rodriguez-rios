@@ -1,0 +1,14 @@
+header {
+  padding: 50px;
+}
+
+.encabezado {
+  border: 1px solid red;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 10px;
+}
+.imagen {
+  border: 1px solid teal;
+  width: 90%;
+}
