@@ -5,15 +5,14 @@ import './Home.css'
 import { useNavigate } from 'react-router-dom'
 
 const Home = () => {
-  const { correntUser } = useContext(UserContext)
-  const navigate = useNavigate()
+  const { currentUser } = useContext(UserContext)
 
   return (
     <div className="main-ontainer">
       <header>
         <section className="encabezado">
-          <img src="/src/assets/usuario.png" alt="usuario" class="imagen" />
-          <p>{JSON.stringify(correntUser)}</p>
+          <img src="/src/assets/usuario.png" alt="usuario" className="imagen" />
+          <p>{currentUser.username}</p>
         </section>
       </header>
       <div className="btn-start">
