@@ -1,0 +1,53 @@
+.sign-in-container .sign-in-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h2 {
+  color: #5e454b;
+}
+.input-form {
+  background: none;
+  background-color: #cee5d0;
+  font-size: 18px;
+  padding: 10px 10px 10px 5px;
+  display: block;
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  margin: 25px 0;
+}
+
+.input-form:focus {
+  outline: none;
+}
+
+.btn-login {
+  display: flex;
+  justify-content: space-between;
+}
+.btn1-login {
+  padding: 0 35px 0 35px;
+}
+.btn2-login {
+  padding: 0 35px 0 35px;
+}
+.btn-form {
+  min-width: 165px;
+  width: auto;
+  height: 50px;
+  border-radius: 5px;
+  letter-spacing: 0.5px;
+  line-height: 50px;
+  padding: 0 35px 0 35px;
+  font-size: 15px;
+  background-color: #5e454b;
+  color: #f3f0d7;
+  font-weight: bolder;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+}
