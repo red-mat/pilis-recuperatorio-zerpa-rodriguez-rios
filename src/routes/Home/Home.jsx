@@ -1,16 +1,19 @@
+import { useLogin } from '@/context/login/useLogin'
 import { UserContext } from '@/context/UserContext'
 import { useContext } from 'react'
+import { Navigate } from 'react-router'
 import './Home.css'
 
 const Home = () => {
-  const { currentUser } = useContext(UserContext)
+  const { isLogin, login } = useLogin()
 
+  if (!isLogin) return <Navigate to={'/login'} />
   return (
     <div className="main-ontainer">
       <header>
         <section className="encabezado">
           <img src="/src/assets/usuario.png" alt="usuario" className="imagen" />
-          <p>{currentUser.username}</p>
+          <p>{login.data.name}</p>
         </section>
       </header>
       <div className="btn-start">
