@@ -38,8 +38,5 @@ describe('Encoder', () => {
     const failDecode = decoder('casita casa cabaña', encode)
 
     expect(failDecode).toEqual('')
-
-    const decode = JSON.parse('["hola mudo"]')
-    expect(decode).toEqual(null)
   })
 })
