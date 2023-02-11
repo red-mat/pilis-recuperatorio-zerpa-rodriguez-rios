@@ -1,16 +1,16 @@
 import { Logger } from '@/services/login/logger'
-import { createContext, useCallback } from 'react'
+import { useCallback, useState } from 'react'
+import { Login } from './context'
 
-export const Login = createContext(null)
 const logger = Logger.Instance()
 
 export function LoginProvider({ children }) {
   const [isLogin, setIsLogin] = useState(logger.isLogin())
   const [login, setLogin] = useState(logger.getLogin())
 
-  const update = useCallback(logger => {
-    setIsLogin(logger.isLogin())
-    setLogin(logger.getLogin())
+  const update = useCallback(log => {
+    setIsLogin(log.isLogin())
+    setLogin(log.getLogin())
   }, [])
 
   return (
