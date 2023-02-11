@@ -1,10 +1,8 @@
 import { useContext } from 'react'
 import { useForm } from 'react-hook-form'
-import { UserContext } from '../../context/UserContext'
-import Home from '../Home/Home'
-import './Login.css'
-import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
+import { UserContext } from '../../context/UserContext'
+import './Login.css'
 
 const Login = () => {
   const { setCurrentUser } = useContext(UserContext)
