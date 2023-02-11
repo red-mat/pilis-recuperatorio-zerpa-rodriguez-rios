@@ -10,22 +10,23 @@ export class User {
     this.data = data
   }
 
-  static Register(data: TUserData): IState<User> {
-    const id = sha256(data.name)
-    const storage = UserStorage.Instance()
+  static Register(data: TUserData): User {
+    const storage = new UserStorage()
 
-    if (storage.exist(id))
-      return { error: true, state: 'ya existe un usuario con ese nombre' }
+    const id = sha256(data.name)
+
+    if (storage.exist(id)) return null
 
     const user = new User(data)
     storage.add(user)
 
-    return { error: false, state: 'usuario registrado', value: user }
+    return user
   }
   static Auth(credentials: TUserCredentials): IState<User> {
     const { name, password } = credentials
 
-    const storage = UserStorage.Instance()
+    const storage = new UserStorage()
+
     const id = sha256(name)
 
     const encryptedData = storage.get(id)
@@ -61,8 +62,9 @@ export class User {
     return encoder(password, data)
   }
   update(data: Partial<TUserData>): IState<User> {
+    const storage = new UserStorage()
+
     const newId = sha256(data.name)
-    const storage = UserStorage.Instance()
 
     if (this.getID() !== newId && storage.exist(newId))
       return { error: true, state: 'ya existe un usuario con ese nombre' }

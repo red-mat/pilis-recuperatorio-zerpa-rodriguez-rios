@@ -6,7 +6,7 @@ const STORAGE_KEY = 'USERS'
 
 const storage = Storage(STORAGE_KEY, '')
 export class UserStorage {
-  private data: TUsersStorage | null
+  private data: TUsersStorage | null = null
 
   constructor() {
     storage.create()
@@ -14,6 +14,7 @@ export class UserStorage {
 
     if (strStorage === '') {
       this.data = null
+      return
     }
 
     this.data = storage.parse() as TUsersStorage
@@ -21,6 +22,7 @@ export class UserStorage {
 
   add(newUser: User) {
     if (this.exist(newUser.getID())) return
+    if (this.data === null) this.data = {}
 
     // Update data
     const id = newUser.getID()
@@ -49,6 +51,8 @@ export class UserStorage {
   }
 
   exist(id: string): boolean {
-    return undefined !== this.data[id] && this.data[id] !== null
+    console.log(this.data)
+    if (!this.data) return false
+    return this.data.hasOwnProperty(id)
   }
 }
