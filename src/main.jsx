@@ -2,15 +2,15 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
 import '@/css/index.css'
-import { UserProvider } from './context/UserContext'
 import { BrowserRouter } from 'react-router-dom'
+import { LoginProvider } from './context/login/provider'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
-      <UserProvider>
+      <LoginProvider>
         <App />
-      </UserProvider>
+      </LoginProvider>
     </BrowserRouter>
   </React.StrictMode>
 )
