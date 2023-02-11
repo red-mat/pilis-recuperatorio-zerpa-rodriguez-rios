@@ -1,3 +1,4 @@
+import { IState } from '@/types/globals/state'
 import { TUserData, TUserCredentials, TPublicData } from '@/types/login'
 import { decoder, encoder, sha256 } from '@/uses/encoder'
 import { UserStorage } from './user-storage'
