@@ -4,26 +4,23 @@ import { User } from './user'
 
 const STORAGE_KEY = 'USERS'
 
+const storage = Storage(STORAGE_KEY, '')
 export class UserStorage {
-  private static instance: UserStorage
-  private static storage = Storage(STORAGE_KEY, '{}')
-  private data: TUsersStorage
+  private data: TUsersStorage | null
 
-  private constructor() {
-    UserStorage.storage.create()
-    this.data = UserStorage.storage.parse()
-  }
+  constructor() {
+    storage.create()
+    const strStorage = storage.get()
 
-  public static Instance(): UserStorage {
-    if (!UserStorage.instance) {
-      UserStorage.instance = new UserStorage()
+    if (strStorage === '') {
+      this.data = null
     }
 
-    return UserStorage.instance
+    this.data = storage.parse() as TUsersStorage
   }
 
   add(newUser: User) {
-    if (this.exist(newUser.getID())) return null
+    if (this.exist(newUser.getID())) return
 
     // Update data
     const id = newUser.getID()
@@ -31,12 +28,12 @@ export class UserStorage {
 
     // update storage
     const parseData = JSON.stringify(this.data)
-    UserStorage.storage.set(parseData)
+    storage.set(parseData)
   }
 
   get(id: string): string {
     const userData = this.data[id]
-    if (userData) return null
+    if (!userData) return null
     return userData
   }
 
@@ -48,10 +45,10 @@ export class UserStorage {
 
     // update storage
     const parseData = JSON.stringify(this.data)
-    UserStorage.storage.set(parseData)
+    storage.set(parseData)
   }
 
   exist(id: string): boolean {
-    return undefined !== this.data[id]
+    return undefined !== this.data[id] && this.data[id] !== null
   }
 }
