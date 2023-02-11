@@ -1,4 +1,5 @@
 import { decoder, encoder, sha256 } from '@/uses/encoder/encoder'
+import { expect } from 'vitest'
 
 const TEST_DATA = {
   key: '1234',
@@ -29,5 +30,17 @@ describe('Encoder', () => {
 
     expect(hash).toBeTypeOf('string')
     expect(hash).not.toEqual(data)
+  })
+
+  test('fail decoder', () => {
+    const { key, data: dataTest } = TEST_DATA
+    const encode = encoder(key, dataTest)
+    const failDecode = decoder('casita casa cabaña', encode)
+
+    console.log(failDecode)
+    expect(failDecode).toEqual('')
+
+    const decode = JSON.parse('["hola mudo"]')
+    expect(decode).toEqual(null)
   })
 })

@@ -4,6 +4,7 @@ export function Storage(key: string, def: string) {
   const del = () => localStorage.removeItem(key)
   const init = () => localStorage.setItem(key, def)
   const exist = () => get() !== null
+  const parse = () => JSON.parse(get())
   const create = () => exist() || init()
 
   return {
@@ -12,6 +13,7 @@ export function Storage(key: string, def: string) {
     del,
     init,
     exist,
+    parse,
     create,
   }
 }

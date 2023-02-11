@@ -1,5 +1,5 @@
-export type TUserLogin = IUserLogin
-interface IUserLogin {
+export type TUserCredentials = IUserCredentials
+interface IUserCredentials {
   name: string
   password: string
 }
@@ -10,8 +10,8 @@ interface IPublicData {
 }
 
 export type TUserData = IUserData
-interface IUserData extends TPublicData {
+interface IUserData extends IPublicData {
   password: string
 }
 
-export type TUsersStorage = Record<string, TUserData>
+export type TUsersStorage = Record<string, string>
