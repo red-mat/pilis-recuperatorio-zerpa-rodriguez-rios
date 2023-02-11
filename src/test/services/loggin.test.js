@@ -6,18 +6,29 @@ const USER = { name: 'asdf', password: 'asdf' }
 
 describe('Login Test', () => {
   test('should make user', () => {
-    const log = Logger.Instance()
+    const logger = new Logger()
+
     const user = User.Register(USER)
-    log.LogIn(user)
+    logger.LogIn(user)
 
     expect(user).not.toBeNull()
 
-    const isLogin = log.isLogin()
+    const isLogin = logger.isLogin()
     expect(isLogin).toBeTruthy()
-    console.log(log.getLogin())
 
-    // const nameLog = log.getLogin().data.name
-    // const name = user.getData().name
-    // expect(nameLog).toEqual(name)
+    const name = logger.getLogin().data.name
+    expect(name).toEqual(USER.name)
+  })
+
+  test('logOut', () => {
+    const logger = new Logger()
+
+    expect(logger.isLogin()).toBeTruthy()
+    const name = logger.getLogin().data.name
+    expect(name).toEqual(USER.name)
+
+    logger.LogOut()
+    console.log(logger.getLogin())
+    expect(logger.isLogin()).toBeFalsy()
   })
 })

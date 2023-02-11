@@ -6,13 +6,14 @@ import { User } from './user'
 const STORAGE_KEY = 'LOGGER'
 
 export class Logger {
-  private static instance: Logger
-  private static storage = Storage(STORAGE_KEY, undefined)
+  private static storage = Storage(STORAGE_KEY, '')
+  private login: TLogin | null = null
 
-  private login: TLogin | undefined
-
-  private constructor(login: TLogin | undefined) {
-    if (login === undefined) this.login = undefined
+  constructor(login?: TLogin) {
+    if (this.isLogin()) {
+      const login = Logger.storage.parse()
+      this.login = login
+    } else if (!login) this.login = null
     else {
       const parse = JSON.stringify(login)
 
@@ -25,41 +26,31 @@ export class Logger {
     }
   }
 
-  static Instance(): Logger {
-    if (Logger.instance !== undefined) return Logger.instance
-    if (!this.storage.exist()) {
-      this.instance = new Logger(undefined)
-      return this.instance
+  LogIn(user: User) {
+    if (this.isLogin()) {
+      return
     }
 
-    const login = Logger.storage.parse()
-    this.instance = new Logger(login)
-
-    return this.instance
-  }
-
-  LogIn(user: User): Logger {
-    if (Logger.storage.exist()) throw new Error('is LogIn')
-
-    Logger.instance = new Logger({
+    this.login = {
       id: user.getID(),
       data: user.getData(),
       token: user.getToken(),
-    })
+    }
 
-    return Logger.instance
+    const parse = JSON.stringify(this.login)
+    Logger.storage.set(parse)
   }
 
   isLogin(): boolean {
-    return this.isLogin !== undefined
+    return Logger.storage.get() !== null
   }
 
   LogOut() {
     Logger.storage.del()
-    this.login = undefined
+    this.login = null
   }
 
   getLogin(): TLogin {
-    return { ...this.login } as TLogin
+    return this.login
   }
 }

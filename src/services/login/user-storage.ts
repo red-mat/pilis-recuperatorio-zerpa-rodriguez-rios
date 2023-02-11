@@ -51,7 +51,6 @@ export class UserStorage {
   }
 
   exist(id: string): boolean {
-    console.log(this.data)
     if (!this.data) return false
     return this.data.hasOwnProperty(id)
   }

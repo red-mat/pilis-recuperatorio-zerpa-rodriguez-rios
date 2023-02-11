@@ -13,7 +13,6 @@ describe('Trivia Api', () => {
   test('get category', async () => {
     category = await getCategory()
 
-    console.log(category)
     expect(category['Music']).toBeDefined()
   })
 })

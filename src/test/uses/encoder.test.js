@@ -37,7 +37,6 @@ describe('Encoder', () => {
     const encode = encoder(key, dataTest)
     const failDecode = decoder('casita casa cabaña', encode)
 
-    console.log(failDecode)
     expect(failDecode).toEqual('')
 
     const decode = JSON.parse('["hola mudo"]')
