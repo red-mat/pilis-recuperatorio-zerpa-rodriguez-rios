@@ -5,7 +5,7 @@ import { describe, expect } from 'vitest'
 const USER = { name: 'asdf', password: 'asdf' }
 
 describe('Login Test', () => {
-  test('should make user', () => {
+  test('should register user', () => {
     const logger = new Logger()
 
     const user = User.Register(USER)
@@ -30,5 +30,18 @@ describe('Login Test', () => {
     logger.LogOut()
     console.log(logger.getLogin())
     expect(logger.isLogin()).toBeFalsy()
+  })
+
+  test('should LogIn', () => {
+    const logger = new Logger()
+    const user = User.Auth(USER)
+
+    expect(logger.isLogin()).toBeFalsy()
+
+    logger.LogIn(user.value)
+    expect(logger.isLogin()).toBeTruthy()
+
+    const name = user.value.getData().name
+    expect(name).toEqual(logger.getLogin().data.name)
   })
 })
