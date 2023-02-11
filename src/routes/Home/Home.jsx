@@ -1,8 +1,6 @@
 import { UserContext } from '@/context/UserContext'
-import React from 'react'
 import { useContext } from 'react'
 import './Home.css'
-import { useNavigate } from 'react-router-dom'
 
 const Home = () => {
   const { currentUser } = useContext(UserContext)
