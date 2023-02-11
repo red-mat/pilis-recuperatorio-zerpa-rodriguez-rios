@@ -1,56 +1,50 @@
-import { useContext } from 'react'
+import { useLogin } from '@/context/login/useLogin'
 import { useForm } from 'react-hook-form'
-import { useNavigate } from 'react-router-dom'
-import { UserContext } from '../../context/UserContext'
+import { Navigate } from 'react-router-dom'
+import { Button, Input } from './components'
 import './Login.css'
 
 const Login = () => {
-  const { setCurrentUser } = useContext(UserContext)
-  const navigate = useNavigate()
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm()
+  const { isLogin } = useLogin()
+  const hookForm = useForm()
 
-  const onSubmit = data => {
-    setCurrentUser(data)
-    navigate('/')
-  }
-
+  if (isLogin) return <Navigate to="/" />
   return (
     <div className="sign-in-container">
       <h2>Ingresa con tu usuario y contraseña</h2>
-      <form className="sign-in-form" onSubmit={handleSubmit(onSubmit)}>
-        <input
+      <form className="sign-in-form">
+        <Input
+          name="name"
           className="input-form"
           type="text"
-          placeholder="Nombre de usuario"
-          {...register('username', {
-            required: 'Debe ingresar su nombre de usuario',
-          })}
+          placeholder="Nombre del usuario"
+          error="Debe ingresar su nombre de usuario"
+          hookForm={hookForm}
         />
-        <p>{errors.username?.message}</p>
-        <input
+
+        <Input
+          name="password"
           className="input-form"
           type="password"
-          placeholder="Contraseña"
-          {...register('password', {
-            required: 'Debe ingresar su contraseña',
-          })}
+          placeholder="Nombre del usuario"
+          error="Debe ingresar su contraseña"
+          hookForm={hookForm}
         />
-        <p>{errors.password?.message}</p>
+
         <div className="btn-login">
-          <div className="btn1-login">
-            <button className="btn-form" type="submit">
-              Iniciar Sesión
-            </button>
-          </div>
-          <div className="btn2-login">
-            <button className="btn-form" type="submit">
-              Registrarse
-            </button>
-          </div>
+          <Button
+            className="btn1-login"
+            label="Iniciar Sesión"
+            hookForm={hookForm}
+            handleButton={() => {}}
+          />
+
+          <Button
+            className="btn2-login"
+            label="Registrarse"
+            hookForm={hookForm}
+            handleButton={() => {}}
+          />
         </div>
       </form>
     </div>
