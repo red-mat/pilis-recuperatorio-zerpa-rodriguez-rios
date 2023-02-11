@@ -1,6 +1,4 @@
-import { useForm } from 'react-hook-form'
-
-export function Input({ name, type, error, placeholder, hookForm }) {
+export function Input({ className, name, type, error, placeholder, hookForm }) {
   const {
     register,
     formState: { errors },
@@ -8,14 +6,14 @@ export function Input({ name, type, error, placeholder, hookForm }) {
   return (
     <>
       <input
-        className="input-form"
+        className={className}
         type={type}
         placeholder={placeholder}
         {...register(name, {
           required: error,
         })}
       />
-      <p>{errors.username?.message}</p>
+      <p>{errors[name]?.message}</p>
     </>
   )
 }

@@ -1,5 +1,3 @@
-import { useForm } from 'react-hook-form'
-
 export function Button({ hookForm, handleButton, className, label }) {
   const { handleSubmit } = hookForm
   return (
