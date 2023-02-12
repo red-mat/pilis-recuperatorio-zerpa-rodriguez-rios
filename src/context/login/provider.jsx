@@ -1,7 +1,7 @@
 import { Login } from './context'
-import { useLogin } from './useLogin'
+import { useLogger } from './hooks/hook'
 
 export function LoginProvider({ children }) {
-  const value = useLogin()
+  const value = useLogger()
   return <Login.Provider value={value}>{children}</Login.Provider>
 }

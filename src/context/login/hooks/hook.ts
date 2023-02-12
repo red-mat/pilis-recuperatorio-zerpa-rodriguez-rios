@@ -1,5 +1,5 @@
 import { Logger } from '@/services/login/logger'
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useMemo } from 'react'
 
 export function useLogger() {
   const logger = new Logger()
@@ -12,5 +12,5 @@ export function useLogger() {
     setLogin(log.getLogin())
   }, [])
 
-  return { isLogin, login, update }
+  return useMemo(() => ({ isLogin, login, update }), [isLogin])
 }
