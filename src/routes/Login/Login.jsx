@@ -1,12 +1,16 @@
-import { useLogin } from '@/context/login/useLogin'
+import { useLogin } from '@/context/login/hooks/useLogin'
 import { useForm } from 'react-hook-form'
 import { Navigate } from 'react-router-dom'
 import { Button, Input } from './components'
+import { useRegister, useLogIn } from '@/hooks/login'
 import './Login.css'
 
 const Login = () => {
   const { isLogin } = useLogin()
+
   const hookForm = useForm()
+  const handleLogin = useLogIn()
+  const handleRegister = useRegister()
 
   if (isLogin) return <Navigate to="/" />
   return (
@@ -36,14 +40,14 @@ const Login = () => {
             className="btn1-login"
             label="Iniciar Sesión"
             hookForm={hookForm}
-            handleButton={() => {}}
+            handleButton={handleLogin}
           />
 
           <Button
             className="btn2-login"
             label="Registrarse"
             hookForm={hookForm}
-            handleButton={() => {}}
+            handleButton={handleRegister}
           />
         </div>
       </form>
