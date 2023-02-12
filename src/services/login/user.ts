@@ -1,5 +1,4 @@
-import { IState } from '@/types/globals/state'
-import { TUserData, TUserCredentials, TPublicData } from '@/types/login'
+import { TPublicData, TUserCredentials, TUserData } from '@/types/login'
 import { decoder, encoder, sha256 } from '@/uses/encoder'
 import { UserStorage } from './user-storage'
 
@@ -8,6 +7,15 @@ export class User {
 
   private constructor(data: TUserData) {
     this.data = data
+  }
+
+  private updateData(newData: Partial<TUserData>) {
+    const data = this.data
+
+    return {
+      name: newData.name || data.name,
+      password: newData.password || data.password,
+    }
   }
 
   static Register(data: TUserData): User {
@@ -22,25 +30,19 @@ export class User {
 
     return user
   }
-  static Auth(credentials: TUserCredentials): IState<User> {
-    const { name, password } = credentials
-
+  static Auth(credentials: TUserCredentials): User {
     const storage = new UserStorage()
 
+    const { name, password } = credentials
     const id = sha256(name)
 
     const encryptedData = storage.get(id)
-
     const stringData = decoder(password, encryptedData)
-    if (stringData === '')
-      return { error: true, state: 'credenciales incorrectas' }
-    const data = JSON.parse(stringData)
 
-    return {
-      error: false,
-      state: 'usuario autentificado',
-      value: new User(data),
-    }
+    if (stringData === '') return null
+
+    const data = JSON.parse(stringData)
+    return new User(data)
   }
 
   getID(): string {
@@ -61,24 +63,19 @@ export class User {
 
     return encoder(password, data)
   }
-  update(data: Partial<TUserData>): IState<User> {
+  update(data: Partial<TUserData>): User {
     const storage = new UserStorage()
 
     const newId = sha256(data.name)
 
-    if (this.getID() !== newId && storage.exist(newId))
-      return { error: true, state: 'ya existe un usuario con ese nombre' }
+    if (this.getID() !== newId && storage.exist(newId)) return null
 
-    const newData: TUserData = {
-      name: data.name || this.data.name,
-      password: data.password || this.data.password,
-    }
+    const newData = this.updateData(data)
+    const userUpdate = new User(newData)
 
     storage.delete(this.getID())
-    return {
-      error: false,
-      state: 'usuario actualizado',
-      value: new User(newData),
-    }
+    storage.add(userUpdate)
+
+    return userUpdate
   }
 }

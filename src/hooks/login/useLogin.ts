@@ -11,10 +11,10 @@ export function useLogIn() {
     const user = User.Auth(data)
 
     if (isLogin) return
-    if (!user.value) return
+    if (!user) return
 
     const logger = new Logger()
-    logger.LogIn(user.value)
+    logger.LogIn(user)
     update(logger)
   }, [])
 }

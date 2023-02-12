@@ -38,10 +38,10 @@ describe('Login Test', () => {
 
     expect(logger.isLogin()).toBeFalsy()
 
-    logger.LogIn(user.value)
+    logger.LogIn(user)
     expect(logger.isLogin()).toBeTruthy()
 
-    const name = user.value.getData().name
+    const name = user.getData().name
     expect(name).toEqual(logger.getLogin().data.name)
   })
 })
