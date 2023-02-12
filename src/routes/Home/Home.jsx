@@ -1,6 +1,4 @@
-import { useLogin } from '@/context/login/useLogin'
-import { UserContext } from '@/context/UserContext'
-import { useContext } from 'react'
+import { useLogin } from '@/context/login'
 import { Navigate } from 'react-router'
 import './Home.css'
 
