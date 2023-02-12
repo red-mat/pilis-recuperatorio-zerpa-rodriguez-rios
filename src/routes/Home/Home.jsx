@@ -1,9 +1,11 @@
 import { useLogin } from '@/context/login'
+import { useLogOut } from '@/hooks/login'
 import { Navigate } from 'react-router'
 import './Home.css'
 
 const Home = () => {
   const { isLogin, login } = useLogin()
+  const handleOut = useLogOut()
 
   if (!isLogin) return <Navigate to={'/login'} />
   return (
@@ -16,8 +18,8 @@ const Home = () => {
       </header>
       <div className="btn-start">
         <h1>Este es el home </h1>
-        <button className="btn" type="submit">
-          Start
+        <button className="btn" type="submit" onClick={handleOut}>
+          exit
         </button>
       </div>
     </div>
