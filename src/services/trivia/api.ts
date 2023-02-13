@@ -21,7 +21,9 @@ function addQuery(query: string): string {
   return '&' + query
 }
 
-type TTriviaFetcher = (preferences: TPreferences) => Promise<TQuestions>
+type TTriviaFetcher = (
+  preferences: Partial<TPreferences>
+) => Promise<TQuestions>
 export const getQuestions: TTriviaFetcher = async preferences => {
   let url = API + '/questions?'
 
@@ -30,18 +32,19 @@ export const getQuestions: TTriviaFetcher = async preferences => {
 
   url += getQuery('limit', preferences.limit.toString())
 
-  const categoryQuery = getQuery('categories', preferences.categories)
+  const categoryQuery = getQuery('categories', preferences.categories ?? '')
   url += addQuery(categoryQuery)
 
-  const difficulty = getQuery('difficulty', preferences.difficulty)
+  const difficulty = getQuery('difficulty', preferences.difficulty ?? '')
   url += addQuery(difficulty)
 
-  const tags = getQuery('tags', preferences.tags)
+  const tags = getQuery('tags', preferences.tags ?? '')
   url += addQuery(tags)
 
-  const region = getQuery('region', preferences.region)
+  const region = getQuery('region', preferences.region ?? '')
   url += addQuery(region)
 
+  console.log(url)
   const response = await fetch(url)
   return await response.json()
 }
