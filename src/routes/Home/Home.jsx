@@ -1,24 +1,25 @@
-import { UserContext } from '@/context/UserContext'
-import React from 'react'
-import { useContext } from 'react'
+import { useLogin } from '@/context/login'
+import { useLogOut } from '@/hooks/login'
+import { Navigate } from 'react-router'
 import './Home.css'
-import { useNavigate } from 'react-router-dom'
 
 const Home = () => {
-  const { currentUser } = useContext(UserContext)
+  const { isLogin, login } = useLogin()
+  const handleOut = useLogOut()
 
+  if (!isLogin) return <Navigate to={'/login'} />
   return (
     <div className="main-ontainer">
       <header>
         <section className="encabezado">
           <img src="/src/assets/usuario.png" alt="usuario" className="imagen" />
-          <p>{currentUser.username}</p>
+          <p>{login.data.name}</p>
         </section>
       </header>
       <div className="btn-start">
         <h1>Este es el home </h1>
-        <button className="btn" type="submit">
-          Start
+        <button className="btn" type="submit" onClick={handleOut}>
+          exit
         </button>
       </div>
     </div>

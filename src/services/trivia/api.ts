@@ -3,7 +3,7 @@ import {
   type TPreferences,
   type TTags,
   type TCategories,
-} from '@/types/trivia-api'
+} from '@/types/trivia'
 
 const API = 'https://the-trivia-api.com/api'
 
