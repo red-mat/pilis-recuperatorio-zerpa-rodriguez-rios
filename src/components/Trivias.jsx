@@ -1,4 +1,6 @@
 import Trivia from './Trivia'
+import regions from '@/data/regions.json'
+import api from '@/services/trivia/api'
 
 const Trivias = ({ trivias }) => {
   return (
