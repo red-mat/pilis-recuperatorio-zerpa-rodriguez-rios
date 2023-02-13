@@ -28,7 +28,6 @@ describe('Login Test', () => {
     expect(name).toEqual(USER.name)
 
     logger.LogOut()
-    console.log(logger.getLogin())
     expect(logger.isLogin()).toBeFalsy()
   })
 
