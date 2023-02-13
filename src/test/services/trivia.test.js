@@ -1,4 +1,4 @@
-import { getCategory, getTags } from '@/services/trivia-api'
+import { getCategory, getTags } from '@/services/trivia'
 import { expect } from 'vitest'
 
 describe('Trivia Api', () => {
