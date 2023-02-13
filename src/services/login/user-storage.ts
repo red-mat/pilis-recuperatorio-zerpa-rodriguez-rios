@@ -1,4 +1,4 @@
-import { TUserData, TUsersStorage } from '@/types/login/user'
+import { TUsersStorage } from '@/types/login/user'
 import { Storage } from '@/uses/storage'
 import { User } from './user'
 
