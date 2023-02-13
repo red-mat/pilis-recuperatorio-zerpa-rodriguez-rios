@@ -37,8 +37,9 @@ export class User {
     const id = sha256(name)
 
     const encryptedData = storage.get(id)
-    const stringData = decoder(password, encryptedData)
+    if (encryptedData === null) return null
 
+    const stringData = decoder(password, encryptedData)
     if (stringData === '') return null
 
     const data = JSON.parse(stringData)
@@ -77,5 +78,14 @@ export class User {
     storage.add(userUpdate)
 
     return userUpdate
+  }
+  delete(): User {
+    const storage = new UserStorage()
+
+    const id = this.getID()
+    const stateDelete = storage.delete(id)
+    if (stateDelete === null) return null
+
+    return new User(this.data)
   }
 }
