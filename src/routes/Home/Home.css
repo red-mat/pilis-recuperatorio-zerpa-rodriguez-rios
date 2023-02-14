@@ -9,13 +9,13 @@ header {
   padding: 10px;
 }
 .imagen {
-  border: 2px solid #5e454b;
+  border: 2px solid var(--contrast-color);
   border-radius: 40px;
-  background-color: #d8b384;
+  background-color: var(--accent-color-contrast);
   width: 30%;
 }
 p {
-  color: #5e454b;
+  color: var(--contrast-color);
   font-weight: bold;
   margin: 0%;
 }
