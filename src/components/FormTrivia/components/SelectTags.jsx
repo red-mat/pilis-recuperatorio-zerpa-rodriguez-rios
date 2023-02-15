@@ -17,6 +17,7 @@ const SelectTags = ({ className, hookForm }) => {
 
   return (
     <select className={className} {...register('tag')}>
+      <option value={''}>Seleccione etiqueta</option>
       {isLoading ||
         tags.map(tag => (
           <option key={tag} value={tag}>

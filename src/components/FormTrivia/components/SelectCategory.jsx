@@ -20,6 +20,7 @@ const SelectCategory = ({ className, hookForm }) => {
 
   return (
     <select className={className} {...register('category')}>
+      <option value={''}>Seleccione categoría</option>
       {isLoading ||
         categories.map(category => (
           <option key={category.name} value={category.tags[0]}>

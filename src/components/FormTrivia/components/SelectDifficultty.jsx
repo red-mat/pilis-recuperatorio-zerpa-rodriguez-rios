@@ -7,6 +7,7 @@ const SelectDifficultty = ({ className, hookForm }) => {
 
   return (
     <select className={className} {...register('difficulty')}>
+      <option value={''}>Seleccione dificultad</option>
       {difficulty.map(diff => (
         <option key={diff} value={diff}>
           {diff}

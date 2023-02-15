@@ -19,6 +19,7 @@ const SelectRegion = ({ className, hookForm }) => {
 
   return (
     <select className={className} {...register('region')}>
+      <option value={''}>Seleccione pais</option>
       {isLoading ||
         regions.map(region => (
           <option key={region.name} value={region.code}>
