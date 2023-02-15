@@ -1,4 +1,4 @@
-import { TDifficulty } from './primitive'
+import { TDifficulty } from './shared'
 
 export interface IPreferences {
   categories: string[]
