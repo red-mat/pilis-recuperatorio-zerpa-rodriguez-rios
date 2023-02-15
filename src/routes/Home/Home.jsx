@@ -11,8 +11,9 @@ const Home = () => {
   const handleOut = useLogOut()
   const [jugando, setJugando] = useState(false)
 
-  const onSubmit = () => {
+  const onSubmit = data => {
     setJugando(true)
+    console.log(data)
   }
 
   const onFinish = () => {
