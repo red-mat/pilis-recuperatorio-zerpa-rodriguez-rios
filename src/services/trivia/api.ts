@@ -44,7 +44,6 @@ export const getQuestions: TTriviaFetcher = async preferences => {
   const region = getQuery('region', preferences.region ?? '')
   url += addQuery(region)
 
-  console.log(url)
   const response = await fetch(url)
   return await response.json()
 }

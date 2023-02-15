@@ -1,4 +1,13 @@
-export type TQuestions = IQuestion[]
+import { TDifficulty } from './shared'
+
+export interface IPreferences {
+  categories: string[]
+  difficulty: TDifficulty | ''
+  limit: number
+  tags: string[]
+  region: string
+}
+
 export interface IQuestion {
   category: string
   id: string
