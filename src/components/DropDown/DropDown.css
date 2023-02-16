@@ -1,0 +1,58 @@
+.DropDown {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  color: var(--contrast-color);
+}
+
+/* dropDown data */
+.DropDown__icon {
+  height: 100%;
+  background-color: var(--accent-color-contrast);
+  border: solid 1px var(--contrast-color);
+  border-radius: 50%;
+}
+.DropDown__title {
+  display: inline-block;
+  width: 80%;
+
+  font-weight: bold;
+  font-size: 20px;
+
+  border-bottom: solid 1.5px var(--contrast-color);
+}
+
+/* dropDown style */
+.DropDown__menu {
+  --speed: 0.3s;
+
+  position: relative;
+  background-color: #fff;
+
+  border: solid 1px var(--contrast-color);
+  border-radius: 5px;
+}
+.DropDown__menu--active {
+  opacity: 1;
+  top: 100%;
+  visibility: visible;
+  transition: var(--speed) ease;
+}
+.DropDown__menu--inactive {
+  opacity: 0;
+  top: 0%;
+  visibility: hidden;
+  transition: var(--speed) ease;
+}
+
+/* Style list options */
+.DropDown__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.header__item {
+  text-align: left;
+  padding-left: 10%;
+}
