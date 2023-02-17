@@ -1,3 +1,4 @@
+import { usePreferencesContext } from '@/context/preferences'
 import regions from '@/data/regions.json'
 import { TriviaApi } from '@/services/trivia'
 import CardTrivia from './components/CardTrivia'
@@ -59,6 +60,8 @@ const trivias = [
 ]
 
 export const Trivia = ({ onFinish }) => {
+  const { preferences } = usePreferencesContext()
+  console.log(preferences)
   return (
     <>
       <h2>The trivias</h2>

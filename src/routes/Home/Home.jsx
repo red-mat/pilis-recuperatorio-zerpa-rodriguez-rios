@@ -5,14 +5,16 @@ import { Navigate } from 'react-router'
 
 import { Trivia, FormTrivia } from '@/components'
 import { Header, Main } from './components'
+import { useOnSubmit } from './hooks/useOnSubmit'
 
 const Home = () => {
   const { isLogin, login } = useLogin()
   const [isPlaying, setIsPlaying] = useState(false)
+  const updatePreferences = useOnSubmit()
 
   const onSubmit = data => {
+    updatePreferences(data)
     setIsPlaying(true)
-    console.log(data)
   }
 
   const onFinish = data => {
