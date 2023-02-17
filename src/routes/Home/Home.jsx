@@ -3,8 +3,8 @@ import Trivias from '@/components/Trivias'
 import { useLogin } from '@/context/login'
 import { useState } from 'react'
 import { Navigate } from 'react-router'
-import { Header } from './components/header'
-import './Home.css'
+import { Header } from './components/header/header'
+import Main from './components/main/Main'
 
 const Home = () => {
   const { isLogin, login } = useLogin()
@@ -25,13 +25,15 @@ const Home = () => {
   return (
     <>
       <Header login={login} />
-      <div className="main-container">
-        {isPlaying ? (
+      <Main isPlaying={isPlaying}>
+        <Main.Playing>
           <Trivias onFinish={onFinish} />
-        ) : (
+        </Main.Playing>
+
+        <Main.NotPlaying>
           <FormTrivia onSubmit={onSubmit} />
-        )}
-      </div>
+        </Main.NotPlaying>
+      </Main>
     </>
   )
 }

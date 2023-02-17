@@ -11,7 +11,7 @@ export function Item({ onClick, icon, label }) {
   )
 }
 
-function DropDown({ icon, title, children }) {
+export function DropDown({ icon, title, children }) {
   const [active, setActive] = useState(false)
   return (
     <div className="DropDown" onClick={() => setActive(!active)}>
@@ -35,5 +35,3 @@ function DropDown({ icon, title, children }) {
   )
 }
 DropDown.Item = Item
-
-export default DropDown

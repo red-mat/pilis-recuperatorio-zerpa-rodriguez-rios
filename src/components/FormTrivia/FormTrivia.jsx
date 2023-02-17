@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form'
 import SelectDifficultty from './components/SelectDifficultty'
 import SelectLimit from './components/SelectLimit'
 
-const FormTrivia = ({ onSubmit }) => {
+export const FormTrivia = ({ onSubmit }) => {
   const hookForm = useForm()
 
   return (
@@ -34,4 +34,3 @@ const FormTrivia = ({ onSubmit }) => {
     </>
   )
 }
-export default FormTrivia

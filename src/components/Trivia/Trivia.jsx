@@ -1,6 +1,6 @@
 import regions from '@/data/regions.json'
 import { TriviaApi } from '@/services/trivia'
-import CardTrivia from './CardTrivia'
+import CardTrivia from './components/CardTrivia'
 
 const trivias = [
   {
@@ -58,7 +58,7 @@ const trivias = [
   },
 ]
 
-const Trivias = ({ onFinish }) => {
+export const Trivia = ({ onFinish }) => {
   return (
     <>
       <h2>The trivias</h2>
@@ -71,4 +71,3 @@ const Trivias = ({ onFinish }) => {
     </>
   )
 }
-export default Trivias
