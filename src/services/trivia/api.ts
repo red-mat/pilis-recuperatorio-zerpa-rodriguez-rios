@@ -11,9 +11,17 @@ function getQuery(parameter: string, value: string | string[]): string {
   const query = parameter + '='
 
   if (typeof value === 'string') return value === '' ? value : query + value
-  if (value.length === 0) return ''
 
-  return query + value.reduce((parse, value) => parse + ',' + value)
+  const arrayValue = value.reduce((parse, value) => {
+    if (parse === '' && value === '') return ''
+    if (parse === '' && value !== '') return value + ','
+    if (value === '') return parse
+
+    return parse + ',' + value
+  })
+
+  if (arrayValue === '') return ''
+  return query + arrayValue
 }
 
 function addQuery(query: string): string {
