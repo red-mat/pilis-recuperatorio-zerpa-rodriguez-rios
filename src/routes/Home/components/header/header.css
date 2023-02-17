@@ -1,0 +1,8 @@
+.header {
+  position: absolute;
+  display: flex;
+  height: 5em;
+
+  top: 40px;
+  left: 40px;
+}
