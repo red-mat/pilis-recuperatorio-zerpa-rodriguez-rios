@@ -1,44 +1,39 @@
 import { useLogin } from '@/context/login'
-import { useLogOut } from '@/hooks/login'
-import { Navigate } from 'react-router'
-import './Home.css'
-import FormTrivia from '@/components/FormTrivia/FormTrivia'
-import Trivias from '@/components/Trivias'
 import { useState } from 'react'
+
+import { Navigate } from 'react-router'
+
+import { Trivia, FormTrivia } from '@/components'
+import { Header, Main } from './components'
 
 const Home = () => {
   const { isLogin, login } = useLogin()
-  const handleOut = useLogOut()
-  const [jugando, setJugando] = useState(false)
+  const [isPlaying, setIsPlaying] = useState(false)
 
   const onSubmit = data => {
-    setJugando(true)
+    setIsPlaying(true)
     console.log(data)
   }
 
-  const onFinish = () => {
-    setJugando(false)
+  const onFinish = data => {
+    console.log(data)
+    setIsPlaying(false)
   }
 
   if (!isLogin) return <Navigate to={'/login'} />
+
   return (
     <>
-      <header>
-        <section className="encabezado">
-          <img src="/src/assets/usuario.png" alt="usuario" className="imagen" />
-          <p>{login.data.name}</p>
-        </section>
-        <button className="btn__exit" type="submit" onClick={handleOut}>
-          exit
-        </button>
-      </header>
-      <div className="main-container">
-        {jugando ? (
-          <Trivias onFinish={onFinish} />
-        ) : (
+      <Header login={login} />
+      <Main isPlaying={isPlaying}>
+        <Main.Playing>
+          <Trivia onFinish={onFinish} />
+        </Main.Playing>
+
+        <Main.NotPlaying>
           <FormTrivia onSubmit={onSubmit} />
-        )}
-      </div>
+        </Main.NotPlaying>
+      </Main>
     </>
   )
 }
