@@ -1,6 +1,6 @@
 import {
-  type TQuestions,
-  type TPreferences,
+  type IQuestion,
+  type IPreferences,
   type TTags,
   type TCategories,
 } from '@/types/trivia'
@@ -22,8 +22,8 @@ function addQuery(query: string): string {
 }
 
 type TTriviaFetcher = (
-  preferences: Partial<TPreferences>
-) => Promise<TQuestions>
+  preferences: Partial<IPreferences>
+) => Promise<IQuestion[]>
 export const getQuestions: TTriviaFetcher = async preferences => {
   let url = API + '/questions?'
 
