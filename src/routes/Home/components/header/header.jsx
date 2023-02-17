@@ -1,7 +1,7 @@
 import './header.css'
 
 import { useLogOut } from '@/hooks/login'
-import DropDown from '@/components/DropDown/DropDown'
+import { DropDown } from '@/components'
 import userIcon from '@/assets/user.png'
 import exitIcon from '@/assets/icons/exit.svg'
 

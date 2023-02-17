@@ -7,7 +7,7 @@ function Playing({ children }) {
 function NotPlaying({ children }) {
   return <>{children}</>
 }
-function Main({ isPlaying, children }) {
+export function Main({ isPlaying, children }) {
   const [ItemA, ItemB] = children
 
   const Playing = ItemA.type.name === 'Playing' ? ItemA : ItemB
@@ -22,5 +22,3 @@ function Main({ isPlaying, children }) {
 
 Main.Playing = Playing
 Main.NotPlaying = NotPlaying
-
-export default Main

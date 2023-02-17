@@ -1,10 +1,10 @@
-import FormTrivia from '@/components/FormTrivia/FormTrivia'
-import Trivias from '@/components/Trivias'
 import { useLogin } from '@/context/login'
 import { useState } from 'react'
+
 import { Navigate } from 'react-router'
-import { Header } from './components/header/header'
-import Main from './components/main/Main'
+
+import { Trivia, FormTrivia } from '@/components'
+import { Header, Main } from './components'
 
 const Home = () => {
   const { isLogin, login } = useLogin()
@@ -27,7 +27,7 @@ const Home = () => {
       <Header login={login} />
       <Main isPlaying={isPlaying}>
         <Main.Playing>
-          <Trivias onFinish={onFinish} />
+          <Trivia onFinish={onFinish} />
         </Main.Playing>
 
         <Main.NotPlaying>
