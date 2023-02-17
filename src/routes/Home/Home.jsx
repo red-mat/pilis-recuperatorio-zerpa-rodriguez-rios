@@ -8,16 +8,16 @@ import './Home.css'
 
 const Home = () => {
   const { isLogin, login } = useLogin()
-  const [jugando, setJugando] = useState(false)
+  const [isPlaying, setIsPlaying] = useState(false)
 
   const onSubmit = data => {
-    setJugando(true)
+    setIsPlaying(true)
     console.log(data)
   }
 
   const onFinish = data => {
     console.log(data)
-    setJugando(false)
+    setIsPlaying(false)
   }
 
   if (!isLogin) return <Navigate to={'/login'} />
@@ -26,7 +26,7 @@ const Home = () => {
     <>
       <Header login={login} />
       <div className="main-container">
-        {jugando ? (
+        {isPlaying ? (
           <Trivias onFinish={onFinish} />
         ) : (
           <FormTrivia onSubmit={onSubmit} />
