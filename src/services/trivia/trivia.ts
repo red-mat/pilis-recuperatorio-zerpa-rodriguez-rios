@@ -55,4 +55,7 @@ export class Trivia {
     }
     return totalPoints
   }
+  getQuiz() {
+    return Object.values(this.questions)
+  }
 }
