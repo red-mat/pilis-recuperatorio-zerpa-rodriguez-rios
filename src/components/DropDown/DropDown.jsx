@@ -2,17 +2,16 @@ import './DropDown.css'
 
 import { useState } from 'react'
 
-export function Item({ onClick, text }) {
+export function Item({ onClick, icon, label }) {
   return (
-    <li className="header__item" onClick={onClick}>
-      {text}
+    <li className="DropDown__item" onClick={onClick}>
+      <img src={icon} />
+      {label}
     </li>
   )
 }
 
-DropDown.Item = Item
-export function DropDown({ icon, title, children }) {
-  ç
+function DropDown({ icon, title, children }) {
   const [active, setActive] = useState(false)
   return (
     <div className="DropDown" onClick={() => setActive(!active)}>
@@ -35,3 +34,6 @@ export function DropDown({ icon, title, children }) {
     </div>
   )
 }
+DropDown.Item = Item
+
+export default DropDown

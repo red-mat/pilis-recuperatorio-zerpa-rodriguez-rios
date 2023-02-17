@@ -1,17 +1,18 @@
+import './header.css'
+
 import { useLogOut } from '@/hooks/login'
+import DropDown from '@/components/DropDown/DropDown'
+import userIcon from '@/assets/user.png'
+import exitIcon from '@/assets/icons/exit.svg'
 
 export function Header({ login }) {
   const handleOut = useLogOut()
 
   return (
-    <header>
-      <section className="encabezado">
-        <img src="/src/assets/usuario.png" alt="usuario" className="imagen" />
-        <p>{login.data.name}</p>
-      </section>
-      <button className="btn__exit" type="submit" onClick={handleOut}>
-        exit
-      </button>
+    <header className="header">
+      <DropDown icon={userIcon} title={login.data.name}>
+        <DropDown.Item onClick={handleOut} icon={exitIcon} label="Exit" />
+      </DropDown>
     </header>
   )
 }
