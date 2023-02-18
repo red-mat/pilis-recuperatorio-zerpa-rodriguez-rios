@@ -1,6 +1,6 @@
+import './Trivias.css'
+
 import { usePreferencesContext } from '@/context/preferences'
-import regions from '@/data/regions.json'
-import { TriviaApi } from '@/services/trivia'
 import CardTrivia from './components/CardTrivia'
 
 const trivias = [
@@ -59,6 +59,15 @@ const trivias = [
   },
 ]
 
+const ListQuiz = ({ trivias }) => {
+  return (
+    <div className="trivias">
+      {trivias.map(data => (
+        <CardTrivia key={data.id} data={data} />
+      ))}
+    </div>
+  )
+}
 export const Trivia = ({ onFinish }) => {
   const { preferences } = usePreferencesContext()
   console.log(preferences)
@@ -66,9 +75,7 @@ export const Trivia = ({ onFinish }) => {
     <>
       <h2>The trivias</h2>
       <form>
-        {trivias.map(data => (
-          <CardTrivia key={data.id} data={data} />
-        ))}
+        <ListQuiz trivias={trivias} />
         <button onClick={onFinish}>finalizar</button>
       </form>
     </>
