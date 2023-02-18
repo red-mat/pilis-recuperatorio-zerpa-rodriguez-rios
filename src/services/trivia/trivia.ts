@@ -11,7 +11,7 @@ const MULTIPLIERS: IMultipliers = {
 }
 
 export class Trivia {
-  questions: Record<string, Quiz>
+  questions: Record<string, Quiz> = {}
   basePoints: number
   multipliers: IMultipliers
 
