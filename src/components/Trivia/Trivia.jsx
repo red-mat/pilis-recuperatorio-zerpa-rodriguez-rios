@@ -59,14 +59,21 @@ const trivias = [
   },
 ]
 
+const ListQuiz = ({ trivias }) => {
+  return (
+    <div className="trivias">
+      {trivias.map(data => (
+        <CardTrivia key={data.id} data={data} />
+      ))}
+    </div>
+  )
+}
 export const Trivia = ({ onFinish }) => {
   return (
     <>
       <h2>The trivias</h2>
-      <form className="trivias">
-        {trivias.map(data => (
-          <CardTrivia key={data.id} data={data} />
-        ))}
+      <form>
+        <ListQuiz trivias={trivias} />
         <button onClick={onFinish}>finalizar</button>
       </form>
     </>
