@@ -1,3 +1,4 @@
+import './Trivias.css'
 import regions from '@/data/regions.json'
 import { TriviaApi } from '@/services/trivia'
 import CardTrivia from './components/CardTrivia'
@@ -62,7 +63,7 @@ export const Trivia = ({ onFinish }) => {
   return (
     <>
       <h2>The trivias</h2>
-      <form>
+      <form className="trivias">
         {trivias.map(data => (
           <CardTrivia key={data.id} data={data} />
         ))}
