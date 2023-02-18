@@ -1,3 +1,17 @@
-.block__question {
+.fieldset__block {
   display: flex;
+  flex-direction: column;
+  background-color: var(--accent-color);
+  border-radius: 5px;
+  border: none;
+}
+.block__question {
+  font-weight: bold;
+  color: var(--contrast-color);
+}
+.block__answer {
+  text-align: left;
+}
+.radio__botton {
+  background: var(--contrast-color);
 }

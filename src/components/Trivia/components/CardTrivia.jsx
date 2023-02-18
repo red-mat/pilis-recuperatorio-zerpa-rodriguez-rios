@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import './CardTrivia.css'
 
 const exampleData = {
   category: 'Sport & Leisure',
@@ -26,23 +27,22 @@ const CardTrivia = ({ data = exampleData }) => {
 
   return (
     <>
-      <div className="block__question">
-        <fieldset>
-          <legend>{data.question}</legend>
+      <fieldset className="fieldset__block">
+        <legend className="block__question">{data.question}</legend>
 
-          {respuestas.map(respuesta => (
-            <label htmlFor={respuesta} key={respuesta}>
-              <input
-                id={data.id}
-                name={data.id}
-                type="radio"
-                value={respuesta}
-              />
-              {respuesta}
-            </label>
-          ))}
-        </fieldset>
-      </div>
+        {respuestas.map(respuesta => (
+          <label htmlFor={respuesta} key={respuesta} className="block__answer">
+            <input
+              className="radio__botton"
+              id={data.id}
+              name={data.id}
+              type="radio"
+              value={respuesta}
+            />
+            {respuesta}
+          </label>
+        ))}
+      </fieldset>
     </>
   )
 }
