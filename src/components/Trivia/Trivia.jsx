@@ -30,9 +30,6 @@ export const Trivia = ({ onSubmit, trivia }) => {
   if (loading) return <h2>loading</h2>
   return (
     <>
-      {/* TODO: remove title */}
-      <h2>The trivias</h2>
-
       <FormProvider {...hookForm}>
         <form onSubmit={onSubmit}>
           <ListQuiz trivia={trivia} />
