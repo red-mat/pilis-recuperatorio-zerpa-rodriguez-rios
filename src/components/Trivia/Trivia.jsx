@@ -16,11 +16,11 @@ const ListQuiz = ({ trivia }) => {
 
 export const Trivia = ({ onFinish }) => {
   const { preferences } = usePreferencesContext()
-  const { trivia } = useTrivia(preferences)
+  const { trivia, loading } = useTrivia(preferences)
 
   const onSubmit = data => console.log(data)
 
-  if (trivia === undefined) return <h2>loading</h2>
+  if (loading) return <h2>loading</h2>
   return (
     <>
       <h2>The trivias</h2>

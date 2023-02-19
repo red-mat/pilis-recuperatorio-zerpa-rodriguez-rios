@@ -5,6 +5,7 @@ import { useQuery } from 'react-query'
 
 export function useTrivia(preferences: IPreferences) {
   const [trivia, setTrivia] = useState<Trivia>(undefined)
+  const [loading, setLoading] = useState(true)
   const { data, isLoading, refetch } = useQuery('questions', () =>
     TriviaApi.getQuestions(preferences)
   )
@@ -14,6 +15,10 @@ export function useTrivia(preferences: IPreferences) {
       setTrivia(() => new Trivia(data))
     }
   }, [isLoading])
+  useEffect(() => {
+    if (trivia === undefined) setLoading(true)
+    else setLoading(false)
+  })
 
-  return { trivia, refetch }
+  return { loading, trivia, refetch }
 }
