@@ -18,7 +18,7 @@ export function useTrivia(preferences: IPreferences) {
   useEffect(() => {
     if (trivia === undefined) setLoading(true)
     else setLoading(false)
-  })
+  }, [trivia])
 
   return { loading, trivia, refetch }
 }
