@@ -1,8 +1,6 @@
 import './Trivias.css'
 
-import { usePreferencesContext } from '@/context/preferences'
-import { useTrivia } from '@/hooks/trivia/useTrivia'
-import { useForm, FormProvider } from 'react-hook-form'
+import { FormProvider, useForm } from 'react-hook-form'
 
 import CardTrivia from './components/CardTrivia'
 
@@ -23,17 +21,14 @@ const ListQuiz = ({ trivia }) => {
 }
 
 export const Trivia = ({ onSubmit, trivia }) => {
-  const { preferences } = usePreferencesContext()
-  const { trivia, loading } = useTrivia(preferences)
   const hookForm = useForm()
 
-  if (loading) return <h2>loading</h2>
   return (
     <>
       <FormProvider {...hookForm}>
-        <form onSubmit={onSubmit}>
+        <form onSubmit={hookForm.handleSubmit(onSubmit)}>
           <ListQuiz trivia={trivia} />
-          <button>finalizar</button>
+          <button type="submit">finalizar</button>
         </form>
       </FormProvider>
     </>
