@@ -1,5 +1,6 @@
 import { Trivia } from '@/components'
-import { useTrivia } from '@/hooks/trivia/usePreferences'
+import { CondComp } from '@/components/CondComp/CondComp'
+import { useTrivia } from '@/hooks/trivia/useTrivia'
 
 export function TriviaGame({ preferences }) {
   const { loading, trivia } = useTrivia(preferences)
