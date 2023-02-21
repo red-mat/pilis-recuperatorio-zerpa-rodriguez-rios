@@ -16,8 +16,8 @@ interface IContext {
     setPreferences: (p: IPreferences) => void
   }
   points: {
-    points: Trivia
-    setTrivia: (t: Trivia) => void
+    points: number
+    setPoints: (t: number) => void
   }
 }
 export const MainContext = createContext<IContext>(undefined)
