@@ -1,18 +1,23 @@
-function Playing({ children }) {
-  return <>{children}</>
+import { CondComp } from '@/components/CondComp/CondComp'
+import { useMainContext } from '@/routes/Home/components/main/context/context'
+import { FormPreferences } from './components/FormPreferences'
+
+export function Main() {
+  const {
+    playing: { isPlaying, setIsPlaying },
+    preferences: { preferences },
+  } = useMainContext()
+
+  return (
+    <CondComp conditional={isPlaying}>
+      <CondComp.WhenFalse>
+        <FormPreferences />
+      </CondComp.WhenFalse>
+
+      <CondComp.WhenTrue>
+        {JSON.stringify(preferences)}
+        <button onClick={() => setIsPlaying(false)}>exit</button>
+      </CondComp.WhenTrue>
+    </CondComp>
+  )
 }
-
-function NotPlaying({ children }) {
-  return <>{children}</>
-}
-export function Main({ isPlaying, children }) {
-  const [ItemA, ItemB] = children
-
-  const Playing = ItemA.type.name === 'Playing' ? ItemA : ItemB
-  const NotPlaying = ItemA.type.name === 'NotPlaying' ? ItemA : ItemB
-
-  return isPlaying ? Playing : NotPlaying
-}
-
-Main.Playing = Playing
-Main.NotPlaying = NotPlaying
