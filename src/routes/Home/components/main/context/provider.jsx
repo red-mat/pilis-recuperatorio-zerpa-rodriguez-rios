@@ -1,5 +1,4 @@
-import { useTrivia } from '@/hooks/trivia/useTrivia'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { MainContext } from './context'
 
 function MainProvider({ children }) {
