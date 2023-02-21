@@ -1,6 +1,7 @@
 import { CondComp } from '@/components/CondComp/CondComp'
 import { useMainContext } from '@/routes/Home/components/main/context/context'
 import { FormPreferences } from './components/FormPreferences'
+import { TriviaGame } from './components/TriviaGame'
 
 export function Main() {
   const {
@@ -15,7 +16,7 @@ export function Main() {
       </CondComp.WhenFalse>
 
       <CondComp.WhenTrue>
-        {JSON.stringify(preferences)}
+        <TriviaGame preferences={preferences} />
         <button onClick={() => setIsPlaying(false)}>exit</button>
       </CondComp.WhenTrue>
     </CondComp>
