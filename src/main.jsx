@@ -4,7 +4,6 @@ import App from './App'
 import '@/css/index.css'
 import { BrowserRouter } from 'react-router-dom'
 import { LoginProvider } from './context/login/provider'
-import { PreferencesProvider } from './context/preferences'
 import { QueryClient, QueryClientProvider } from 'react-query'
 
 const client = new QueryClient()
@@ -14,9 +13,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <BrowserRouter>
       <QueryClientProvider client={client}>
         <LoginProvider>
-          <PreferencesProvider>
-            <App />
-          </PreferencesProvider>
+          <App />
         </LoginProvider>
       </QueryClientProvider>
     </BrowserRouter>
