@@ -1,10 +1,15 @@
 # Recuperatorio PILIS Modulo 3
 
-El proyecto consiste en un juego de trivias que son obtenidas atravez de la api https://the-trivia-api.com/ la misma nos permite seleccionar una categoría, dificultad y cantidad de preguntas, como asi también la decada de la cual el jugador prefiere sus trivias y el país.
+El proyecto consiste en un juego de trivias que son obtenidas a través de la api https://the-trivia-api.com/, la misma nos permite seleccionar una categoría, dificultad y cantidad de preguntas, como asi también la década de la cual el jugador prefiere sus trivias y el país.
 
 ## Pre-requisitos :inbox_tray::
 
-Que cosas necesitas para instalar el software y como instalarlas
+- Node.js v16.17.0
+- `npm install`
+
+## Despliegue :outbox_tray::
+
+- npm run dev
 
 ## Tasks :clipboard::
 
@@ -24,10 +29,6 @@ Que cosas necesitas para instalar el software y como instalarlas
 - TypeScript
 - Encriptacion de datos de usuario
 - Vitest
-
-## Despliegue :outbox_tray::
-
-- npm run dev
 
 ## Autores :black_nib::
 
