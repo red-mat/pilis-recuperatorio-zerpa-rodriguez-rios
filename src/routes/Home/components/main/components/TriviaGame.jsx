@@ -21,7 +21,15 @@ export function TriviaGame({ preferences }) {
       </CondComp.WhenTrue>
 
       <CondComp.WhenFalse>
-        <FormTrivia onSubmit={onSubmit} trivia={trivia} />
+        <CondComp conditional={trivia?.getQuiz().length == 0}>
+          <CondComp.WhenTrue>
+            <h2>No trivia</h2>
+          </CondComp.WhenTrue>
+          <CondComp.WhenFalse>
+            <FormTrivia onSubmit={onSubmit} trivia={trivia} />
+          </CondComp.WhenFalse>
+        </CondComp>
+
         <Modal isOpen={isFinish} handleClose={() => setIsFinish(false)}>
           <h1>{points}</h1>
           <button
