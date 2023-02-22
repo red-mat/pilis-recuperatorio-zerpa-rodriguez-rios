@@ -3,6 +3,14 @@ import { describe, expect, test } from 'vitest'
 import regions from '@/data/regions.json'
 import { Quiz } from '@/services/trivia/quiz'
 
+const PREFERENCES = {
+  categories: ['', '', ''],
+  difficulty: '',
+  limit: 5,
+  tags: [''],
+  region: '',
+}
+
 describe('Trivia Api', () => {
   let tags
   let category
@@ -34,6 +42,11 @@ describe('Trivia Api', () => {
     const quiz = await TriviaApi.getQuestions(preferences)
 
     expect(quiz).toHaveLength(1)
+  })
+  test('should get questions from default preferences', async () => {
+    const questions = await TriviaApi.getQuestions(PREFERENCES)
+
+    expect(questions).toHaveLength(PREFERENCES.limit)
   })
 })
 

@@ -1,24 +1,24 @@
-import { PreferencesProvider } from '@/context/preferences'
+import { CondComp } from '@/components/CondComp/CondComp'
+import { useMainContext } from '@/routes/Home/components/main/context/context'
+import { FormPreferences } from './components/FormPreferences'
+import { TriviaGame } from './components/TriviaGame'
 
-function Playing({ children }) {
-  return <>{children}</>
-}
-
-function NotPlaying({ children }) {
-  return <>{children}</>
-}
-export function Main({ isPlaying, children }) {
-  const [ItemA, ItemB] = children
-
-  const Playing = ItemA.type.name === 'Playing' ? ItemA : ItemB
-  const NotPlaying = ItemA.type.name === 'NotPlaying' ? ItemA : ItemB
+export function Main() {
+  const {
+    playing: { isPlaying, setIsPlaying },
+    preferences: { preferences },
+  } = useMainContext()
 
   return (
-    <PreferencesProvider>
-      {isPlaying ? Playing : NotPlaying}
-    </PreferencesProvider>
+    <CondComp conditional={isPlaying}>
+      <CondComp.WhenFalse>
+        <FormPreferences />
+      </CondComp.WhenFalse>
+
+      <CondComp.WhenTrue>
+        <TriviaGame preferences={preferences} />
+        <button onClick={() => setIsPlaying(false)}>exit</button>
+      </CondComp.WhenTrue>
+    </CondComp>
   )
 }
-
-Main.Playing = Playing
-Main.NotPlaying = NotPlaying
