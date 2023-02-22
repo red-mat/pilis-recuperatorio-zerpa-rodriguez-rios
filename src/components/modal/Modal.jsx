@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { createPortal } from 'react-dom'
 
-export default function ViewModal({ isOpen, handleClose, children }) {
+export default function Modal({ isOpen, handleClose, children }) {
   const content = document.createElement('div')
 
   useEffect(() => {
