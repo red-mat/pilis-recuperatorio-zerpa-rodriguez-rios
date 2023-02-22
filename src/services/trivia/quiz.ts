@@ -3,6 +3,7 @@ import { IQuestion } from '@/types/trivia'
 export class Quiz {
   private question: IQuestion
   private isResolve: boolean = false
+  private answers: string[] = []
 
   constructor(question: IQuestion) {
     this.question = { ...question }
@@ -21,10 +22,13 @@ export class Quiz {
   }
 
   getAnswers() {
-    return this.shuffleArray([
-      ...this.question.incorrectAnswers,
-      this.question.correctAnswer,
-    ])
+    if (this.answers.length === 0)
+      this.answers = this.shuffleArray([
+        this.question.correctAnswer,
+        ...this.question.incorrectAnswers,
+      ])
+
+    return this.answers
   }
 
   getQuestion() {
