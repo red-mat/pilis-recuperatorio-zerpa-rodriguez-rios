@@ -1,3 +1,6 @@
+import './modal.css'
+import closeIcon from '@/assets/icons/close.svg'
+
 import { useEffect } from 'react'
 import { createPortal } from 'react-dom'
 
@@ -13,11 +16,16 @@ export default function Modal({ isOpen, handleClose, children }) {
 
   if (isOpen)
     return createPortal(
-      <div className="portal">
-        <div className="portal__close" onClick={handleClose}>
-          x
+      <div className="modal" onClick={handleClose}>
+        <div className="modal__container">
+          <img
+            className="modal__close"
+            onClick={handleClose}
+            src={closeIcon}
+            alt="close"
+          />
+          {children}
         </div>
-        {children}
       </div>,
       content
     )
