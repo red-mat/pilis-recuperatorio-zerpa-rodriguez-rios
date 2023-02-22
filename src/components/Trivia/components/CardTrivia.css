@@ -1,6 +1,5 @@
 .fieldset__block {
   display: flex;
-  margin-bottom: 2%;
   flex-direction: column;
   background-color: var(--accent-color);
   border-radius: 5px;
