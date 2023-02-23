@@ -11,6 +11,8 @@ El proyecto consiste en un juego de trivias que son obtenidas a través de la ap
 
 - npm run dev
 
+> :warning: **Advertencia:** No es posible desplegar el proyecto transpilado.
+
 ## Tasks :clipboard::
 
 - [x] Utilizar la API https://the-trivia-api.com/
